@@ -1,0 +1,57 @@
+{
+  "name": "@amebas/sdk",
+  "version": "0.1.0",
+  "description": "SDK oficial do bot de sala do Amebas Arena: cliente do WebSocket /v1/rooms/{roomId}/bot com auth, reconexão e eventos e comandos tipados.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amebas-Arena/sdk-js.git"
+  },
+  "homepage": "https://github.com/Amebas-Arena/sdk-js#readme",
+  "bugs": "https://github.com/Amebas-Arena/sdk-js/issues",
+  "keywords": [
+    "amebas-arena",
+    "bot",
+    "websocket",
+    "sdk",
+    "game"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schema": "./protocol/bot-protocol.schema.json"
+  },
+  "files": [
+    "dist",
+    "protocol/bot-protocol.schema.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json",
+    "generate": "tsx scripts/generate-types.ts",
+    "example": "tsx examples/welcome-bot.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "json-schema-to-typescript": "^16.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.4"
+  }
+}
